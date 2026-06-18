@@ -6,9 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-          dolores numquam iusto Ratione earum ducimus autem id iure pariatur
-          dolorum quae maiores.
+          I am a student at COMSATS University, building practical projects with Python, pandas, <span className="no-wrap">machine learning</span>, and Streamlit. My work includes dashboards, forecasting models, customer segmentation, classification and regression projects, Python automation tools, and Java OOP applications. I enjoy turning raw data into clear insights and useful project solutions.
         </p>
       </div>
     </div>

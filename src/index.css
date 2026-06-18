@@ -97,7 +97,17 @@ body {
   height: var(--vh);
   margin: auto;
   margin-top: 50px;
-  margin-bottom: -100px;
+  margin-bottom: 0;
+  z-index: 1;
+  isolation: isolate;
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.techstack-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .techstack h2 {
