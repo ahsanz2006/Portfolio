@@ -10,50 +10,69 @@ const setCharacter = (
 ) => {
   const loader = new GLTFLoader();
   const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath("/draco/");
+  dracoLoader.setDecoderPath(`${import.meta.env.BASE_URL}draco/`);
   loader.setDRACOLoader(dracoLoader);
 
-  const loadCharacter = () => {
-    return new Promise<GLTF | null>(async (resolve, reject) => {
-      try {
-        const encryptedBlob = await decryptFile(
-          "/models/character.enc",
-          "Character3D#@"
-        );
-        const blobUrl = URL.createObjectURL(new Blob([encryptedBlob]));
+  const prepareCharacter = async (gltf: GLTF) => {
+    const character = gltf.scene;
+    await renderer.compileAsync(character, camera, scene);
 
-        let character: THREE.Object3D;
-        loader.load(
-          blobUrl,
-          async (gltf) => {
-            character = gltf.scene;
-            await renderer.compileAsync(character, camera, scene);
-            character.traverse((child: any) => {
-              if (child.isMesh) {
-                const mesh = child as THREE.Mesh;
-                child.castShadow = true;
-                child.receiveShadow = true;
-                mesh.frustumCulled = true;
-              }
-            });
-            resolve(gltf);
-            setCharTimeline(character, camera);
-            setAllTimeline();
-            character!.getObjectByName("footR")!.position.y = 3.36;
-            character!.getObjectByName("footL")!.position.y = 3.36;
-            dracoLoader.dispose();
-          },
-          undefined,
-          (error) => {
-            console.error("Error loading GLTF model:", error);
-            reject(error);
-          }
-        );
-      } catch (err) {
-        reject(err);
-        console.error(err);
+    character.traverse((child: any) => {
+      if (child.isMesh) {
+        const mesh = child as THREE.Mesh;
+        child.castShadow = true;
+        child.receiveShadow = true;
+        mesh.frustumCulled = true;
       }
     });
+
+    setCharTimeline(character, camera);
+    setAllTimeline();
+
+    character.getObjectByName("footR")?.position.setY(3.36);
+    character.getObjectByName("footL")?.position.setY(3.36);
+
+    return gltf;
+  };
+
+  const loadGltf = (url: string) => {
+    return new Promise<GLTF>((resolve, reject) => {
+      loader.load(
+        url,
+        async (gltf) => {
+          try {
+            resolve(await prepareCharacter(gltf));
+          } catch (error) {
+            reject(error);
+          }
+        },
+        undefined,
+        reject
+      );
+    });
+  };
+
+  const loadCharacter = async () => {
+    const glbUrl = `${import.meta.env.BASE_URL}models/character.glb`;
+
+    try {
+      const encryptedBlob = await decryptFile(
+        `${import.meta.env.BASE_URL}models/character.enc`,
+        "Character3D#@"
+      );
+      const blobUrl = URL.createObjectURL(new Blob([encryptedBlob]));
+
+      try {
+        return await loadGltf(blobUrl);
+      } finally {
+        URL.revokeObjectURL(blobUrl);
+      }
+    } catch (error) {
+      console.warn("Encrypted character failed to load; using GLB fallback.", error);
+      return await loadGltf(glbUrl);
+    } finally {
+      dracoLoader.dispose();
+    }
   };
 
   return { loadCharacter };

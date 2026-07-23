@@ -17,7 +17,7 @@
   line-height: 70px;
   font-weight: 400;
   text-align: center;
-  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  background: linear-gradient(0deg, #0ea5e9, #e0f2fe);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -87,21 +87,21 @@
 }
 
 .career-tags span {
-  border: 1px solid rgba(194, 164, 255, 0.55);
-  color: #e8dcff;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #e0f2fe;
   font-size: 12px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   padding: 5px 10px;
   border-radius: 999px;
-  background: rgba(194, 164, 255, 0.1);
+  background: rgba(56, 189, 248, 0.1);
 }
 
 .career-achievement {
   width: 44%;
   margin-top: 14px !important;
   font-size: 14px !important;
-  color: #d7c4ff;
+  color: #93c5fd;
 }
 
 .career-timeline {
@@ -113,7 +113,7 @@
   height: 100%;
   background-image: linear-gradient(
     to top,
-    #aa42ff 20%,
+    #0ea5e9 20%,
     var(--accentColor) 50%,
     transparent 95%
   );
@@ -124,12 +124,12 @@
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-  background-color: #aa42ff;
+  background-color: #0ea5e9;
   width: 10px;
   height: 10px;
   border-radius: 50px;
-  box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 8px #d097ff,
-    0px 0px 110px 20px #f2c0ff;
+  box-shadow: 0px 0px 5px 2px #38bdf8, 0px 0px 15px 8px #0ea5e9,
+    0px 0px 110px 20px rgba(56, 189, 248, 0.35);
   animation: timeline 0.8s linear infinite forwards;
 }
 
@@ -139,7 +139,7 @@
   50%,
   70%,
   90% {
-    box-shadow: 0px 0px 5px 2px #d29bff;
+    box-shadow: 0px 0px 5px 2px #38bdf8;
   }
   10%,
   30%,
@@ -147,17 +147,17 @@
   100%,
   64%,
   80% {
-    box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 5px #d097ff,
-      0px 0px 110px 20px #f2c0ff;
+    box-shadow: 0px 0px 5px 2px #38bdf8, 0px 0px 15px 5px #0ea5e9,
+      0px 0px 110px 20px rgba(56, 189, 248, 0.35);
   }
 }
 @keyframes timeline2 {
   0% {
-    box-shadow: 0px 0px 5px 2px #d29bff;
+    box-shadow: 0px 0px 5px 2px #38bdf8;
   }
   100% {
-    box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 5px #d097ff,
-      0px 0px 110px 20px #f2c0ff;
+    box-shadow: 0px 0px 5px 2px #38bdf8, 0px 0px 15px 5px #0ea5e9,
+      0px 0px 110px 20px rgba(56, 189, 248, 0.35);
   }
 }
 @media only screen and (max-width: 1400px) {

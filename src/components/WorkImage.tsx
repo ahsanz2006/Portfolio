@@ -12,6 +12,8 @@ const WorkImage = (props: Props) => {
   const [isVideo, setIsVideo] = useState(false);
   const [video, setVideo] = useState("");
   const [imageSrc, setImageSrc] = useState(props.image);
+  const placeholder = `${import.meta.env.BASE_URL}images/placeholder.webp`;
+
   const handleMouseEnter = async () => {
     if (props.video) {
       setIsVideo(true);
@@ -40,7 +42,7 @@ const WorkImage = (props: Props) => {
         <img
           src={imageSrc}
           alt={props.alt}
-          onError={() => setImageSrc("/images/placeholder.webp")}
+          onError={() => setImageSrc(placeholder)}
         />
         {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
       </a>

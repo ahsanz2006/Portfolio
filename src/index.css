@@ -8,7 +8,7 @@
   line-height: 1.5;
   scroll-behavior: smooth;
   color-scheme: light dark;
-  color: #eae5ec;
+  color: #f8fafc;
   background-color: var(--backgroundColor);
 
   font-synthesis: none;
@@ -18,8 +18,15 @@
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  --accentColor: #c2a4ff;
-  --backgroundColor: #0b080c;
+  --accentColor: #38bdf8;
+  --strongAccentColor: #0ea5e9;
+  --softAccentColor: #93c5fd;
+  --headingColor: #e0f2fe;
+  --mutedTextColor: #94a3b8;
+  --cardColor: #0f172a;
+  --borderColor: rgba(56, 189, 248, 0.18);
+  --backgroundColor: #020617;
+  --secondaryBackgroundColor: #030712;
   --vh: 100vh;
   --vh: 100svh;
 }
@@ -58,7 +65,7 @@ main {
 body {
   margin: 0;
   height: auto;
-  background-color: #000;
+  background-color: var(--secondaryBackgroundColor);
   flex-grow: 1;
   --cWidth: calc(100% - 30px);
   --cMaxWidth: 1920px;
